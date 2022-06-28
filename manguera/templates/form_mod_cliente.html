@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+          }
+    
+        .error-control {
+            border: 1px solid red;
+        }
+    
+        label.error {
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }  
+    
+    </style>
+
+<script>
+       
+    $(function() 
+    {
+      $("#formulario").validate({
+           rules: {
+                  name: "required",
+                  desc: "required",
+                  },   
+                  
+             messages: 
+              {
+              name: {
+                  required: 'Ingresa tu name',
+                },
+              desc: {
+                  required: 'Ingresa desc',
+              },
+          } 
+      }); 
+  });
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Modificando cliente</h2><br>
+    {% if user.is_authenticated %}
+        <form method="POST" action="#" id="formulario" enctype="multipart/form-data">
+            {% csrf_token %}            
+            <div class="form-group">
+                {{ form_mod_cliente.name.label }}
+                {{ form_mod_cliente.name }}
+            </div>
+
+            <div class="form-group">
+                {{ form_mod_cliente.edad.label }}
+                {{ form_mod_cliente.edad }}
+            </div>
+
+            <input type="submit" class="btn btn-primary" value="Enviar">
+            <a href="{% url 'mostrar_cliente' %}" class="btn btn-success"> Mostrar clientes</a>
+    {% else %} 
+    <h2 style="color:red; text-align:center">No tiene permisos para modificar Clientes</h2>     
+    {% endif %}
+        </form>
+        <br>
+    </div>
+</body>
+{% endblock %}

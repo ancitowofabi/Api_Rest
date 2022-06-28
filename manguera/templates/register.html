@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<main class="container">
+    <form id="formregistro">
+      <div>
+        <h1>Registro de usuario nuevo</h1>
+      </div>
+      <div class=" form-group">
+        <label>Nombre *</label>
+        <input type="text" placeholder="Ingrese nombre" class="form-control" name="nombre" id="nombre"
+          required="required" aria-required="true">
+      </div>
+      <div class=" form-group">
+        <label>Email *</label>
+        <input type="email" placeholder="Ingrese email" class="form-control" name="email" id="email" required="required"
+          aria-required="true">
+      </div>
+      <div class=" form-group">
+        <label>Contraseña *</label>
+        <input type="password" placeholder="Ingrese contraseña" class="form-control" name="contra" minlength="8"
+          id="contra" required="required" aria-required="true">
+      </div>
+      <div class=" form-group">
+        <label>Teléfono</label>
+        <input type="text" placeholder="Ingrese número de teléfono" class="form-control" name="telefono" minlength="9"
+          maxlength="9" id="telefono">
+      </div>
+      <div class=" form-group">
+        <label for="nac">Fecha de nacimiento</label>
+        <input type="date" class="form-control" name="nac" id="nac">
+      </div>
+
+      <div class=" field-genero">
+        <label for="genero">Género</label>
+        <div class="radio-group">
+          <div>
+            <input name="genero" id="genero-0" type="radio">
+            <label for="genero-0">Hombre</label>
+          </div>
+          <div>
+            <input name="genero" id="genero-1" type="radio">
+            <label for="genero-1">Mujer</label>
+          </div>
+          <div>
+            <input name="genero" id="genero-2" type="radio">
+            <label for="genero-2">Optimus Prime</label>
+          </div>
+          <div>
+            <input name="genero" id="genero-3" type="radio">
+            <label for="genero-3">Cactus</label>
+          </div>
+          <div>
+            <input name="genero" id="genero-4" type="radio">
+            <label for="genero-4">Prefiero no especificar</label>
+          </div>
+          <div>
+            <input name="genero" id="genero-5" type="radio">
+            <label for="genero-5">Otros</label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <button type="submit" id="sendregibtn" class="btn btn-primary btn-lg btn-block">Registrarse</button>
+    </form>
+    <br>
+    <br>
+    </div>
+  </main>
+{% endblock %}

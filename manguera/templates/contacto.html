@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <form id="formcontacto">
+      <div >
+          <h1 >Formulario de contacto</h1></div>
+      <div class=" form-group">
+          <label>Nombre *</label>
+          <input type="text" placeholder="Ingrese nombre" class="form-control" name="nombre"  id="nombre" required="required" aria-required="true">
+      </div>
+      <div class=" form-group">
+          <label>Email *</label>
+          <input type="email" placeholder="Ingrese email" class="form-control" name="email"  id="email" required="required" aria-required="true">
+      </div>
+      <div class=" form-group">
+          <label>Teléfono *</label>
+          <input type="text" placeholder="Ingrese número de teléfono" class="form-control" name="telefono" minlength="9" maxlength="9" id="telefono">
+      </div>
+      <div class=" form-group">
+          <label>Mensaje *</label>
+          <textarea type="textarea" class="form-control" name="mensaje" id="mensaje" placeholder="Ingrese su comentario o duda"></textarea>
+      </div>
+
+
+      
+    
+      <br>
+      <button type="submit" id="sendregibtn" class="btn btn-primary btn-lg btn-block">Enviar</button>
+      <br>
+      <br>
+    </form>
+    </div>
+{% endblock %}

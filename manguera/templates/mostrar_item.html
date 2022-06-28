@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<body>
+    <div class="container">
+        <h2>Mostrando items</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>{{ item_form.name.label }}</th>
+                    <th>{{ item_form.desc.label }}</th>
+                    <th>{{ item_form.img.label }}</th>
+                    <th>Modificar items</th>
+                    <th>Eliminar items </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ve in items %}
+                <tr>
+                    <td>{{ ve.name }}</td>
+                    <td>{{ ve.desc }}</td>
+                    <td>{{ ve.img }}</td>
+                    {% if user.is_authenticated %}
+                        <td><a href="{% url 'form_mod_item' ve.name %}" 
+                            class="btn btn-primary">Modificar</a></td>
+                        <td><a href="{% url 'form_del_item' ve.name %}" 
+                            class="btn btn-danger">Eliminar</a></td>
+                    {% else %} 
+                    <td><a href="#">No tiene permisos para modificar</a></td>
+                    <td><a href="#" style="color:red;">No tiene permisos para eliminar</a></td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% if user.is_authenticated %}
+            <a href="{% url 'form_crear_item' %}" class="btn btn-primary">Crear Item</a>
+        {% endif %}    
+        <a href="{% url 'index' %}" class="btn btn-success">Pagina Principal</a>
+
+    </div>
+</body>
+ <br><br>
+{% endblock %}

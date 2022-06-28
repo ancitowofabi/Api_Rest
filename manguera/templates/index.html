@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    <!--Carrusel-->
+    <div class="container-fluid">
+        <div id="carousel1" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel1" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel1" data-slide-to="1"></li>
+                <li data-target="#carousel1" data-slide-to="2"></li>
+                <li data-target="#carousel1" data-slide-to="3"></li>
+            </ol>
+            <!-- diapositivas -->
+            <div class="carousel-inner ">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="{% static 'img/car1.jpg' %}" alt="">
+                    <div class="carousel-caption">
+                        <h3>Ofertas todos los días</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'img/car2.jpg' %}" alt="">
+                    <div class="carousel-caption">
+                        <h3>Variedad de productos</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'img/car3.png' %}" alt="">
+                    <div class="carousel-caption">
+                        <h3>Herramientas De Calidad</h3>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="{% static 'img/car4.png' %}" alt="">
+                    <div class="carousel-caption">
+                        <h3>Productos 100% naturales</h3>
+                    </div>
+                </div>
+            </div>
+            <!-- botones de desplazamiento a izquierda y derecha -->      
+            <a class="carousel-control-prev" href="#carousel1" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel1" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+    <p>
+
+    </p>
+    <hr>
+
+    <!--Cuadro de testo-->
+    <div class="row jumbotron" id="qSomos">
+        <div class="col-lg-6">
+            <div>
+                <h1 onmouseover="style.color = 'green'" onmouseout="style.color= 'black'">Manguera.cl</h1><br>
+                <p>
+                  Lo mejor para tu jardín y espacio al aire libre lo encuentras en Manguera.cl y todas nuestras tiendas.
+                  Descubre los maceteros y artículos de decoración que tenemos para tu jardín, los productos para mantenerlo
+                  impecable como maquinaria y herramientas, además de elementos para organizar tu espacio como bodegas y
+                  gabinetes de jardín.<br><br>
+                  
+                  Disfruta de los mejores momentos junto a tu familia y amigos en tu terraza o espacio al aire libre,
+                  encuentra muebles de terraza, toldos, pérgolas y las mejores opciones de iluminación para convertirlo en un espacio increíble las 24 horas del día. 
+
+                </p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <img src="{% static 'img/magera.png' %}" alt="Manguera.cl" class="img-fluid" onclick="style.transform = 'rotateY(360deg)'; style.transition = 'transform 1s'">
+        </div>
+    </div>
+{% endblock %}

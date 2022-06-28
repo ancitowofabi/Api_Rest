@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+        <!--Todos los productos Existentes en Galeria-->
+          
+            <div class="row">    
+              {% for item in items %}   
+
+              <div class="col-md">        
+                  <div class="card text-center">
+                    <img class="card-img-top" src="{{ item.img.url }}">
+                    <div class="card-body">
+                      <h4 class="card-title">{{ item.name }}</h4>
+                      <p class="card-text">{{ item.desc }}
+                      </p>
+                      <a href="#" class="btn btn-primary">Añadir al carro</a>
+                    </div>
+                  </div>          
+                </div>
+                  {% endfor %}
+              </div>
+{% endblock %}

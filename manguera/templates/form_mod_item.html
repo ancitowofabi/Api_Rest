@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+          }
+    
+        .error-control {
+            border: 1px solid red;
+        }
+    
+        label.error {
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }  
+    
+    </style>
+
+<script>
+       
+    $(function() 
+    {
+      $("#formulario").validate({
+           rules: {
+                  name: "required",
+                  desc: "required",
+                  },   
+                  
+             messages: 
+              {
+              name: {
+                  required: 'Ingresa tu name',
+                },
+              desc: {
+                  required: 'Ingresa desc',
+              },
+          } 
+      }); 
+  });
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <h2>Modificando items</h2><br>
+    {% if user.is_authenticated %}
+        <form method="POST" action="#" id="formulario" enctype="multipart/form-data">
+            {% csrf_token %}            
+            <div class="form-group">
+                {{ mod_form.name.label }}
+                {{ mod_form.name }}
+            </div>
+
+            <div class="form-group">
+                {{ mod_form.desc.label }}
+                {{ mod_form.desc }}
+            </div>
+
+            <div class="form-group">
+                {{ mod_form.img.label }}
+                {{ mod_form.img }}
+            </div>
+            <input type="submit" class="btn btn-primary" value="Enviar">
+            <a href="{% url 'mostrar_item' %}" class="btn btn-success"> Mostrar items</a>
+    {% else %} 
+    <h2 style="color:red; text-align:center">No tiene permisos para modificar items</h2>     
+    {% endif %}
+        </form>
+        <br>
+    </div>
+</body>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
+    
+    <style>
+        body {
+            font-family: Arial;
+          }
+    
+        .error-control {
+            border: 1px solid red;
+        }
+    
+        label.error {
+            color: red;
+            width: 200px;
+            font-size: 0.8em;
+            margin-top: -5px;
+            margin-bottom: 10px;
+        }  
+    
+    </style>
+    
+    <script>
+       
+        $(function() 
+        {
+          $("#formulario").validate({
+               rules: {
+                      name: "required",
+                      desc: "required",
+                      },   
+                      
+                 messages: 
+                  {
+                  name: {
+                      required: 'Ingresa tu name',
+                    },
+                  desc: {
+                      required: 'Ingresa desc',
+                  },             
+              } 
+          }); 
+      });
+</script>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <h2>Registrando cliente</h2>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="row">
+                <form method="POST" action="#" id="formulario" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        {{ cliente_form.name.label }}
+                        {{ cliente_form.name }}
+                    </div>
+                     
+                    <div class="form-group">
+                        {{ cliente_form.edad.label }}
+                        {{ cliente_form.edad }}
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md">
+                            <input type="submit" class="btn btn-primary" value="Enviar">
+                            <input type="reset" class="btn btn-danger" value="Limpiar">
+                            
+                        </div>
+                    </div>
+					<br>
+                </form>
+            </div>
+        {% else %} 
+            <br>
+            <h2 style="color:red; text-align:center">No tiene permisos para crear clientes</h2>     
+            <br>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}

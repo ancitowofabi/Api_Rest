@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'js/imc.js' %}">
+<main class="container">
+    <form id="formcontacto">
+      <div>
+        <h1>Calcula tu IMC</h1>
+      </div>
+      <div class=" form-group">
+        <label>Peso</label>
+        <input type="number" placeholder="Ingrese peso (kg)" class="form-control" id="peso" required="required"
+          aria-required="true">
+      </div>
+      <div class=" form-group">
+        <label>Altura</label>
+        <input type="number" placeholder="Ingrese altura (cm)" class="form-control" id="altura" required="required"
+          aria-required="true">
+      </div>
+
+
+      <br>
+      <button type="button" id="imcbtn" class="btn btn-primary btn-lg btn-block" onClick="imc()">Enviar</button>
+      <br>
+      <br>
+      <h1>Su IMC es de:</h1>
+      <h1 id="imclabel"></h1>
+      <br>
+      <h1>Su peso es:</h1>
+      <h1 id="imctablelabel"></h1>
+      <br>
+    </form>
+    </div>
+  </main>
+{% endblock %}
